@@ -1,0 +1,99 @@
+[
+  {
+    "hidden": false,
+    "image": "/src/assets/projects/jp-photography.webp",
+    "title": "JP Photography",
+    "type": "Demo",
+    "category": "web",
+    "createdDate": "",
+    "modifiedDate": "2025-04",
+    "description": "The **JP Photography** project is a **demonstration website** built to showcase the skills required to create a **visually stunning and highly functional portfolio** for a creative professional. The entire project serves as a testament to my abilities in **frontend design and development**, with a focus on creating an image-centric experience where the photography is the star. To demonstrate advanced frontend techniques, the gallery features **smooth animations using Framer Motion**, creating an engaging and fluid user journey.\n\nThe site is not just a visual showcase; it's also a demonstration of **practical, business-oriented features**. To exhibit proficiency with **third-party API integration**, the site includes a seamless booking system connected to the **Calendly API**, allowing potential clients to schedule sessions directly. This blend of aesthetic design and functional technology highlights my ability to build websites that are both beautiful and effective as business tools.\n\nFrom its **fully responsive layout**, which ensures a perfect display on any device, to its minimalist UI, every aspect of this demo was crafted to showcase a high level of **attention to detail and technical execution**. It stands as a portfolio piece that proves my capability to deliver **elegant and powerful web solutions** for freelance creatives.",
+    "link": "https://photography-demo.joelsgc.dev/",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Calendly API",
+      "Radix UI"
+    ],
+    "modal": true
+  },
+  {
+    "hidden": false,
+    "image": "/src/assets/projects/kovia.webp",
+    "title": "Kovia LLC",
+    "type": "Demo",
+    "category": "web",
+    "createdDate": "",
+    "modifiedDate": "2024-10",
+    "description": "The **Kovia LLC** project is a **conceptual website** designed to showcase the ability to build a **sleek, professional online presence** for a modern business solutions provider. This project serves as a **demonstration of both visual design and technical implementation**, featuring a clean, responsive layout and a focus on corporate aesthetics. It imagines a dynamic agency that provides custom-appointed teams for services ranging from software development to call center operations.\n\nThe site was built to exhibit key features essential for a corporate client, including a **clear presentation of services**, **intuitive navigation**, and **strong calls-to-action** designed to convert visitors into leads. Every element, from the responsive design ensuring cross-device compatibility to the modern tech stack, was chosen to reflect **current web development best practices**. The goal was to create a **fully-realized, production-quality website** that effectively demonstrates the skills required to handle sophisticated client projects.\n\nUltimately, this project functions as a **high-fidelity portfolio piece**, proving my capability in creating **versatile, scalable, and visually compelling websites** tailored to the specific needs of a B2B service provider. It balances a professional look and feel with a robust technical foundation.",
+    "link": "https://kovia-demo.joelsgc.dev/",
+    "tags": [
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Radix UI",
+      "Firebase Cloud Messaging"
+    ],
+    "modal": true
+  },
+  {
+    "hidden": false,
+    "image": "/src/assets/projects/ofibodegas-centro9.webp",
+    "title": "Ofibodegas Centro 9",
+    "category": "web",
+    "type": "Client Work",
+    "createdDate": "",
+    "modifiedDate": "2024-01",
+    "description": "I developed a **custom website** for **Centro9**, a company offering **office and storage space solutions** in **Managua**. The site focuses on providing **potential investors** and **clients** with an **engaging** and **responsive experience**, featuring **information on available spaces**, their **strategic location**, and **key amenities**. I utilized **modern web technologies** such as **React** and **Next.js** for a **fast**, **SEO-optimized**, and **fully responsive site**. Additionally, the site includes a **user-friendly content management system (CMS)** for **easy updates**, making it simpler for the client to **manage their pages and property details**.\n\nThe design was centered on presenting **clear, concise information** about the company's offerings. I incorporated a **smooth, intuitive layout** with a **contact form** that allows users to **easily inquire** about **available spaces**. The **homepage** includes a **hero section** with a **cityscape background**, accompanied by a **compelling call-to-action** to encourage visitors to **reach out**. I also ensured that the site was **optimized for mobile devices**, enhancing **accessibility** for users on **all devices**. The use of **fast-loading images** and **well-organized content** ensures that visitors can **navigate the site quickly** and find the **information they need** without delay.\n\nFor the development, I relied on a **tech stack** consisting of **Next.js**, **React**, and **Tailwind CSS**, which allowed me to implement a **responsive design** with **custom components** and **dynamic content**. The integration of a **contact form** using **React hooks** and **state management** ensures **smooth user interaction**. This project helped **streamline the company's online presence** and reinforced its **commitment to providing top-notch office and storage solutions** in a **rapidly growing part of the city**.",
+    "link": "https://ofibodegascentro9.com/",
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Payload CMS",
+      "Framer Motion",
+      "Nodemailer"
+    ],
+    "modal": true
+  },
+  {
+    "hidden": false,
+    "image": "/src/assets/projects/ga-world-fashion.webp",
+    "title": "GA World Fashion",
+    "category": "web",
+    "type": "Client Work",
+    "createdDate": "",
+    "modifiedDate": "2023-04",
+    "description": "A **tailor-focused website** designed to showcase **GA World Fashion's expert alteration** and **custom tailoring services** while providing a **seamless** and **user-friendly experience** for their **clients**. The site features a **responsive layout** that highlights the brand's **professionalism** and **attention to detail**, ensuring users can **explore services** and **connect with the business effortlessly**.\n\nFrom **detailed service descriptions** to a **smartly integrated SMS booking system**, every element of the site has been **tailored** to meet the **unique needs** of **GA World Fashion**. With sections like **\"Our Services\"** and a **visually appealing services list**, the site effectively communicates their **expertise** in **women's**, **men's**, and **children's alterations**, emphasizing **precision** and **quality craftsmanship**. This project exemplifies a **perfect balance of functionality, design**, and **client-specific solutions**.",
+    "link": "https://gaworldfashion.com/",
+    "tags": [
+      "Next.js",
+      "Tailwind CSS",
+      "Google Maps API",
+      "Radix UI",
+      "Lucide Icons"
+    ],
+    "modal": true
+  },
+  {
+    "hidden": false,
+    "image": "/src/assets/projects/bleeding-hearts.webp",
+    "title": "Bleeding Hearts Across America",
+    "category": "web",
+    "type": "Volunteer",
+    "createdDate": "",
+    "modifiedDate": "2024-11",
+    "description": "**Bleeding Hearts Across America** is a **youth-led nonprofit** focused on providing **resources and support** to **women living below the poverty line** in **Miami**. The website was designed to **engage a wide audience**, from **potential donors** to **those in need**, with **easy navigation**, an **interactive event list**, and **forms** for both **donations** and **volunteer sign-ups**. The design prioritizes **responsiveness** and **accessibility**, ensuring users have a **seamless experience across devices**.\n\nThe site's **color scheme** reflects the nonprofit's **mission of compassion**, with **soft pink tones** and **heart-themed accents**. Key sections such as the **\"Donate\" page** are integrated with **Stripe** for **secure payment processing**, while a **\"Volunteer\" page** encourages active participation through **direct calls to action**. An **interactive \"Events\" page** highlights **ongoing and past initiatives**, making it easy for visitors to **stay informed** and **involved**.\n\nA dedicated **\"Resources\" page**, which is still under development, will further **empower women in need** by providing them with **information** and **access to various services**. The overall design strives for a **welcoming, community-focused atmosphere**, with a layout that promotes **user engagement** and highlights the nonprofit's **ongoing efforts to make a difference**. This project demonstrates my ability to create a **dynamic, purpose-driven website** that balances **form with functionality**.",
+    "link": "https://bleeding-hearts.vercel.app/",
+    "tags": [
+      "Next.js",
+      "Tailwind CSS",
+      "Stripe",
+      "Instagram API",
+      "TikTok API",
+      "Prismic.io"
+    ],
+    "modal": true
+  }
+]

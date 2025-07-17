@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+
+/* Upright variable axis (TTF) */
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('/src/assets/fonts/AzeretMonoVar.ttf') format('truetype-variations');
+  font-weight: 100 900; /* variable weight axis */
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic variable axis (TTF) */
+@font-face {
+  font-family: 'Azeret Mono';
+  src: url('/src/assets/fonts/AzeretMonoVarItalic.ttf')
+    format('truetype-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --background: hsl(35 51% 93%);
+  --foreground: hsl(0 0% 12%);
+  --maroon: hsl(340 86% 19%);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-maroon: var(--maroon);
+
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 430px;
+  --breakpoint-lg: 744px;
+  --breakpoint-xl: 1280px;
+
+  --text-sm: 0.75rem; /* 12px */
+  --text-sm--line-height: 0.875rem; /* 14px */
+  --text-base: 0.875rem; /* 14px */
+  --text-base--line-height: 1rem; /*16px*/
+  --text-lg: 1rem; /* 16px */
+  --text-lg--line-height: 1.25rem; /* 20px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-xl--line-height: 1.5625rem; /* 25px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-2xl--line-height: 1.75rem; /* 28px */
+  --text-3xl: 2.25rem; /* 36 */
+  --text-3xl--line-height: 2.625rem; /* 42 */
+  --text-4xl: 2.5rem; /* 40 */
+  --text-4xl--line-height: 3rem; /* 48 */
+
+  --font-mono: 'Azeret Mono';
+}
+
+@layer base {
+  :root,
+  html,
+  body {
+    @apply overscroll-none bg-background text-foreground font-mono;
+  }
+
+  body {
+    @apply relative min-h-screen w-full flex max-xl:flex-col container mx-auto !max-w-[calc(1024px+64px)] p-4 md:p-8 gap-8 lg:gap-0 xl:gap-8;
+  }
+
+  main {
+    @apply text-foreground/75 text-sm md:text-base lg:text-lg xl:text-xl lg:p-8 w-full space-y-5 xl:space-y-8;
+
+    & *.modal-root,
+    & *:has(+ .modal-root),
+    & style,
+    & *:has(+ style),
+    & *:has(+ section[aria-label='Notifications alt+T']) {
+      margin-bottom: 0px !important;
+    }
+  }
+
+  article {
+    @apply text-foreground/75 text-sm md:text-base lg:text-lg space-y-4 leading-relaxed;
+
+    & *.modal-root,
+    & *:has(+ .modal-root),
+    & style,
+    & *:has(+ style),
+    & *:has(+ section[aria-label='Notifications alt+T']) {
+      margin-bottom: 0px !important;
+    }
+
+    & blockquote {
+      @apply border-l-4 border-maroon pl-4 italic text-foreground/70;
+    }
+
+    & ul {
+      @apply list-disc pl-6;
+    }
+    & ol {
+      @apply list-decimal;
+
+      & li {
+        @apply pl-0;
+      }
+    }
+    & li {
+      @apply mb-1;
+    }
+
+    & pre {
+      @apply bg-foreground/10 text-foreground overflow-x-auto p-4 rounded-md font-mono text-sm;
+    }
+    & code {
+      @apply text-maroon px-1 py-0.5 rounded;
+    }
+
+    & table,
+    & th,
+    & td {
+      @apply border border-foreground px-2 py-1;
+    }
+  }
+
+  h1 {
+    @apply text-lg md:text-2xl lg:text-3xl xl:text-4xl;
+  }
+
+  nav a {
+    @apply font-bold text-base md:text-lg lg:text-xl xl:text-2xl;
+  }
+
+  ul {
+    list-style: '-';
+  }
+  ul {
+    list-style: decimal;
+  }
+
+  ol,
+  ul {
+    @apply pl-10;
+  }
+
+  li {
+    @apply pl-4;
+  }
+
+  button {
+    @apply h-10 px-4 py-3 flex items-center gap-2 border-2 border-foreground bg-foreground hover:bg-foreground/75 text-background transition-colors text-base lg:text-lg;
+
+    &.secondary {
+      @apply bg-background hover:bg-foreground/25 text-foreground;
+    }
+    &.maroon {
+      @apply bg-maroon hover:bg-maroon/90 text-background;
+    }
+  }
+
+  .modal-backdrop::backdrop {
+    @apply bg-foreground/25;
+  }
+
+  .modal-panel {
+    @apply -z-50 pointer-events-none opacity-0 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+
+    &[data-state='open'] {
+      @apply z-50 pointer-events-auto opacity-100;
+    }
+  }
+}
