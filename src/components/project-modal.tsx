@@ -8,7 +8,7 @@ export const ProjectModal = component$(
     <Modal.Root bind:show={isOpen} class='modal-root'>
       <Modal.Panel
         class={cn(
-          'modal-panel modal-backdrop group/modal focus-visible:!outline-none w-full !max-w-[calc(100%-16px)] md:!max-w-[calc(100%-32px)] xl:!max-w-[768px] bg-background text-foreground/75 flex flex-col gap-4 p-4'
+          'modal-panel modal-backdrop group/modal focus-visible:!outline-none !max-h-[calc(100vh-32px)] md:!max-h-[calc(100vh-64px)] w-full !max-w-[calc(100%-16px)] md:!max-w-[calc(100%-32px)] xl:!max-w-[768px] bg-background text-foreground/75 flex flex-col gap-4 p-4'
         )}>
         <Modal.Close class='absolute top-4 right-4 bg-transparent p-0 focus-visible:!outline-none aspect-square size-10 text-foreground border-none cursor-pointer'>
           <svg

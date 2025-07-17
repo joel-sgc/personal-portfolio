@@ -51,6 +51,7 @@ export default component$(() => {
           <ProjectComponent
             key={i}
             project={project}
+            class='cursor-pointer'
             onClick$={() => {
               if (project.modal) {
                 selectedProject.value = i;

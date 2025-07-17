@@ -1,14 +1,8 @@
-import {
-  useLocation,
-  routeLoader$,
-  type DocumentHead,
-} from '@builder.io/qwik-city';
 import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 
-// 1. Load all MDX modules with glob
 const mdxModules = import.meta.glob('/src/assets/blog/*.mdx');
 
-// 2. Loader to prefetch metadata (frontmatter)
 export const usePost = routeLoader$(async ({ params, error }) => {
   const slug = params.id;
 
@@ -32,8 +26,6 @@ export const usePost = routeLoader$(async ({ params, error }) => {
 });
 
 export default component$(() => {
-  const location = useLocation();
-  const id = location.params.id;
   const post = usePost();
   const ComponentSig = useSignal<ReturnType<any> | null>(null);
 
@@ -42,10 +34,39 @@ export default component$(() => {
     ComponentSig.value = (mod as any).default;
   });
 
+  const {
+    title,
+    // description,
+    createdDate,
+    tags,
+  }: {
+    title: string;
+    description: string;
+    createdDate: string;
+    tags: string[];
+  } = post.value.frontmatter;
+
   return (
     <article class='border-l-4 border-l-foreground/25 pl-4 [&>img]:xl:!max-w-[512px] [&>img]:xl:!max-h-[512px]'>
       {ComponentSig.value ?
-        <ComponentSig.value />
+        <>
+          <div class='flex flex-col'>
+            <h1 class='col-span-2'>{title}</h1>
+            <div class='flex gap-2 flex-wrap items-center'>
+              <span class='mr-2'>{createdDate}</span>
+              {tags.map((tag, i) => (
+                <div
+                  key={i}
+                  class='project-tags text-sm xl:text-base px-2 py-1 md:px-3 md:py-2 border border-foreground/25'>
+                  {tag}
+                </div>
+              ))}
+            </div>
+
+            <hr class='col-span-2 mt-4' />
+          </div>
+          <ComponentSig.value />
+        </>
       : <p>Loading…</p>}
     </article>
   );
