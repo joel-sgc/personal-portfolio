@@ -9,6 +9,9 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 import tailwindcss from '@tailwindcss/vite';
 import pkg from './package.json';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 type PkgDep = Record<string, string>;
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
   dependencies: PkgDep;
@@ -28,6 +31,9 @@ export default defineConfig(({ command, mode }): UserConfig => {
       // Put problematic deps that break bundling here, mostly those with binaries.
       // For example ['better-sqlite3'] if you use that in server functions.
       exclude: [],
+    },
+    define: {
+      'import.meta.env.WEBHOOK_URL': JSON.stringify(process.env.WEBHOOK_URL),
     },
 
     /**

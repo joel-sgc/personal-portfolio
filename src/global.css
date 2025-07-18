@@ -163,6 +163,13 @@
     @apply border border-foreground/25 p-2.5 focus-visible:outline-none;
   }
 
+  input:disabled,
+  textarea:disabled,
+  label:disabled,
+  button:disabled {
+    @apply cursor-not-allowed opacity-75;
+  }
+
   input {
     @apply h-10;
   }
