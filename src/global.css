@@ -154,6 +154,19 @@
     }
   }
 
+  label {
+    @apply text-sm lg:text-base;
+  }
+
+  input,
+  textarea {
+    @apply border border-foreground/25 p-2.5 focus-visible:outline-none;
+  }
+
+  input {
+    @apply h-10;
+  }
+
   .modal-backdrop::backdrop {
     @apply bg-foreground/25;
   }
