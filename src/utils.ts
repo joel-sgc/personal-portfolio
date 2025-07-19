@@ -38,3 +38,33 @@ export function parseBoldText(input: string) {
 
   return result;
 }
+
+export const getImage = (path: string): string => {
+  const imageModules = import.meta.glob(
+    '/src/assets/**/*.{jpeg,jpg,png,gif,webp,svg}',
+    {
+      query: { meta: true },
+      import: 'default',
+      eager: true,
+    }
+  );
+
+  // Normalize path for different OS environments
+  const normalizedPath = path.replace(/\\/g, '/');
+
+  // Find the matching image in all assets
+  const match = Object.entries(imageModules).find(([filePath]) =>
+    filePath.includes(normalizedPath)
+  );
+
+  if (!match) {
+    const availableImages = Object.keys(imageModules).map((p) =>
+      p.replace('/src/assets/', '')
+    );
+    console.error('Image not found:', normalizedPath);
+    console.error('Available images:', availableImages);
+    throw new Error(`Image not found: ${normalizedPath}`);
+  }
+
+  return match[1] as string;
+};

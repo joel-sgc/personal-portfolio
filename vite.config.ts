@@ -6,6 +6,7 @@ import { defineConfig, type UserConfig } from 'vite';
 import { qwikVite } from '@builder.io/qwik/optimizer';
 import { qwikCity } from '@builder.io/qwik-city/vite';
 import tsconfigPaths from 'vite-tsconfig-paths';
+import { imagetools } from 'vite-imagetools';
 import tailwindcss from '@tailwindcss/vite';
 import pkg from './package.json';
 
@@ -25,7 +26,21 @@ errorOnDuplicatesPkgDeps(devDependencies, dependencies);
  */
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
-    plugins: [tailwindcss(), qwikCity(), qwikVite(), tsconfigPaths()],
+    plugins: [
+      tailwindcss(),
+      qwikCity(),
+      qwikVite(),
+      tsconfigPaths(),
+      imagetools({
+        defaultDirectives: (url) => {
+          if (url.searchParams.has('meta')) return new URLSearchParams();
+          return new URLSearchParams({
+            format: 'webp',
+            quality: '80',
+          });
+        },
+      }),
+    ],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
       // Put problematic deps that break bundling here, mostly those with binaries.

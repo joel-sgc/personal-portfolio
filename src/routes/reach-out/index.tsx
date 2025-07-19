@@ -3,8 +3,8 @@ import {
   RequestHandler,
   useLocation,
 } from '@builder.io/qwik-city';
-import { PageTitle } from '~/components/page-title';
 import { $, component$, useSignal } from '@builder.io/qwik';
+import { PageTitle } from '~/components/page-title';
 import { toast } from 'qwik-sonner';
 
 type ContactForm = {
@@ -60,6 +60,7 @@ Received via website contact form
         json(500, { message: 'Something went wrong. Please try again.' });
       }
     } catch (error) {
+      console.error(error);
       json(500, { message: 'Something went wrong. Please try again.' });
     }
   }

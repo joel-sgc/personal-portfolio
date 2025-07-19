@@ -1,4 +1,4 @@
-import { component$, Fragment, QRL } from '@builder.io/qwik';
+import { component$, Fragment } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
 import { cn, parseBoldText } from '~/utils';
 

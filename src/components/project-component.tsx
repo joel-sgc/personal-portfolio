@@ -1,9 +1,9 @@
 import { component$, Fragment, QRL } from '@builder.io/qwik';
-import { cn, parseBoldText } from '~/utils';
+import { cn, getImage, parseBoldText } from '~/utils';
 
 export type ProjectType = {
   hidden: boolean;
-  image?: string;
+  image: string | null;
   title: string;
   category: string;
   type: string;
@@ -25,6 +25,8 @@ export const ProjectComponent = component$(
     class?: string;
     onClick$?: QRL<() => any>;
   }) => {
+    const imageSrc = project.image ? getImage(project.image) : null;
+
     return (
       <div
         class={cn(
@@ -46,12 +48,12 @@ export const ProjectComponent = component$(
         </div>
 
         {/* ===== Image (If Applicable) ===== */}
-        {!!project.image && (
+        {!!imageSrc && (
           <img
-            src={project.image}
-            width={1200}
-            height={630}
-            class='project-image w-full md:max-w-[256px]'
+            src={imageSrc}
+            width={256}
+            height={256}
+            class="class='project-image w-full md:max-w-[256px]"
           />
         )}
 

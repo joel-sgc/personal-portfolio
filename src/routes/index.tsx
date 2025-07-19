@@ -79,7 +79,7 @@ export default component$(() => {
         {projects.slice(0, 2).map((project, i) => (
           <ProjectComponent
             key={i}
-            project={project}
+            project={{ ...project, image: null }}
             class='[&>*.project-image]:hidden cursor-pointer'
             onClick$={() => {
               selectedProject.value = i;

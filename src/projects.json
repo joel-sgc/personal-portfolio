@@ -1,7 +1,7 @@
 [
   {
     "hidden": false,
-    "image": "/src/assets/projects/jp-photography.webp",
+    "image": "jp-photography.webp",
     "title": "JP Photography",
     "type": "Demo",
     "category": "web",
@@ -20,7 +20,7 @@
   },
   {
     "hidden": false,
-    "image": "/src/assets/projects/kovia.webp",
+    "image": "kovia.webp",
     "title": "Kovia LLC",
     "type": "Demo",
     "category": "web",
@@ -39,7 +39,7 @@
   },
   {
     "hidden": false,
-    "image": "/src/assets/projects/ofibodegas-centro9.webp",
+    "image": "ofibodegas-centro9.webp",
     "title": "Ofibodegas Centro 9",
     "category": "web",
     "type": "Client Work",
@@ -59,7 +59,7 @@
   },
   {
     "hidden": false,
-    "image": "/src/assets/projects/ga-world-fashion.webp",
+    "image": "ga-world-fashion.webp",
     "title": "GA World Fashion",
     "category": "web",
     "type": "Client Work",
@@ -78,7 +78,7 @@
   },
   {
     "hidden": false,
-    "image": "/src/assets/projects/bleeding-hearts.webp",
+    "image": "bleeding-hearts.webp",
     "title": "Bleeding Hearts Across America",
     "category": "web",
     "type": "Volunteer",
