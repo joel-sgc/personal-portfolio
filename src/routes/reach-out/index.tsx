@@ -29,8 +29,6 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       // If no bot, proceed
       delete body.homepage;
 
-      console.log(import.meta.env.WEBHOOK_URL);
-
       // Send request to Discord webhook
       const req = await fetch(import.meta.env.WEBHOOK_URL, {
         method: 'POST',
@@ -48,7 +46,7 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
 💬 Message:
 > ${body.message}
 
-Received via website contact form 
+Received via website contact form
             `,
         }),
       });
@@ -57,11 +55,11 @@ Received via website contact form
       if (req.status === 204) {
         json(200, { message: 'Message sent successfully!' });
       } else {
-        json(500, { message: 'Something went wrong. Please try again.' });
+        json(500, { message: 'Something went wrong.\nPlease try again...' });
       }
     } catch (error) {
       console.error(error);
-      json(500, { message: 'Something went wrong. Please try again.' });
+      json(500, { message: 'Something went wrong.\nPlease try again...' });
     }
   }
 };
@@ -89,9 +87,13 @@ export default component$(() => {
     form.reset();
 
     if (req.status === 200) {
-      toast.success((await req.json()).message);
+      toast.success((await req.json()).message, {
+        class: '[&_svg]:!text-[#2c7e70]',
+      });
     } else {
-      toast.error((await req.json()).message);
+      toast.error((await req.json()).message, {
+        class: '[&_svg]:!text-maroon',
+      });
     }
   });
 

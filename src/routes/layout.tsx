@@ -9,7 +9,12 @@ export default component$(() => {
       <Header />
       <main>
         <Slot />
-        <Toaster />
+        <Toaster
+          toastOptions={{
+            class:
+              '!bg-background !border-2 !border-foreground/25 !rounded-none !font-mono !whitespace-pre-wrap !gap-4',
+          }}
+        />
       </main>
     </>
   );
