@@ -5,6 +5,7 @@ import {
 } from '@builder.io/qwik-city';
 import { $, component$, useSignal } from '@builder.io/qwik';
 import { PageTitle } from '~/components/page-title';
+import { Client } from '@notionhq/client';
 import { toast } from 'qwik-sonner';
 
 type ContactForm = {
@@ -29,30 +30,57 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       // If no bot, proceed
       delete body.homepage;
 
-      // Send request to Discord webhook
-      const req = await fetch(import.meta.env.WEBHOOK_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Send request to Notion webhook
+      const notion = new Client({
+        auth: import.meta.env.NOTION_API_KEY,
+      });
+      const req = await notion.pages.create({
+        parent: {
+          type: 'database_id',
+          database_id: import.meta.env.NOTION_DB_ID,
         },
-        body: JSON.stringify({
-          content: `
-<@277185445362794499>
-📬 New Form Submission Received!
-
-👤 Name: ${body.name}
-📧 Email: ${body.email}
-📝 Subject: ${body.subject}
-💬 Message:
-> ${body.message}
-
-Received via website contact form
-            `,
-        }),
+        properties: {
+          name: {
+            title: [
+              {
+                text: {
+                  content: body.name,
+                },
+              },
+            ],
+          },
+          email: {
+            email: body.email,
+          },
+          subject: {
+            rich_text: [
+              {
+                text: {
+                  content: body.subject,
+                },
+              },
+            ],
+          },
+          message: {
+            rich_text: [
+              {
+                text: {
+                  content: body.message,
+                },
+              },
+            ],
+          },
+        },
       });
 
-      // 204 means all went well, but there's no content response from server
-      if (req.status === 204) {
+      // An existing ID means all went well, but an error could have a variable response
+      if (!!req.id) {
+        // Send push notification
+        fetch(`https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`, {
+          method: 'POST',
+          body: JSON.stringify(body),
+        });
+
         json(200, { message: 'Message sent successfully!' });
       } else {
         json(500, { message: 'Something went wrong.\nPlease try again...' });

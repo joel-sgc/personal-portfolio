@@ -48,7 +48,11 @@ export default defineConfig(({ command, mode }): UserConfig => {
       exclude: [],
     },
     define: {
-      'import.meta.env.WEBHOOK_URL': JSON.stringify(process.env.WEBHOOK_URL),
+      'import.meta.env.NOTION_API_KEY': JSON.stringify(
+        process.env.NOTION_API_KEY
+      ),
+      'import.meta.env.NOTION_DB_ID': JSON.stringify(process.env.NOTION_DB_ID),
+      'import.meta.env.NTFY_TOPIC': JSON.stringify(process.env.NTFY_TOPIC),
     },
 
     /**
