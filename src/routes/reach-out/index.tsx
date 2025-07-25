@@ -74,7 +74,7 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       });
 
       // An existing ID means all went well, but an error could have a variable response
-      if (!!req.id) {
+      if (req.id) {
         // Send push notification
         fetch(`https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`, {
           method: 'POST',
