@@ -5,8 +5,7 @@ import {
 } from '@builder.io/qwik-city';
 import { $, component$, useSignal } from '@builder.io/qwik';
 import { PageTitle } from '~/components/page-title';
-import { Client } from '@notionhq/client';
-import { toast } from 'qwik-sonner';
+import { toast, Toaster } from 'qwik-sonner';
 
 type ContactForm = {
   name: string;
@@ -31,50 +30,52 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       delete body.homepage;
 
       // Send request to Notion webhook
-      const notion = new Client({
-        auth: import.meta.env.NOTION_API_KEY,
-      });
-      const req = await notion.pages.create({
-        parent: {
-          type: 'database_id',
-          database_id: import.meta.env.NOTION_DB_ID,
+      const req = await fetch('https://api.notion.com/v1/pages', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${import.meta.env.NOTION_API_KEY}`,
+          'Content-Type': 'application/json',
+          'Notion-Version': '2022-06-28',
         },
-        properties: {
-          name: {
-            title: [
-              {
-                text: {
-                  content: body.name,
+        body: JSON.stringify({
+          parent: { database_id: import.meta.env.NOTION_DB_ID },
+          properties: {
+            name: {
+              title: [
+                {
+                  text: {
+                    content: body.name,
+                  },
                 },
-              },
-            ],
-          },
-          email: {
-            email: body.email,
-          },
-          subject: {
-            rich_text: [
-              {
-                text: {
-                  content: body.subject,
+              ],
+            },
+            email: {
+              email: body.email,
+            },
+            subject: {
+              rich_text: [
+                {
+                  text: {
+                    content: body.subject,
+                  },
                 },
-              },
-            ],
-          },
-          message: {
-            rich_text: [
-              {
-                text: {
-                  content: body.message,
+              ],
+            },
+            message: {
+              rich_text: [
+                {
+                  text: {
+                    content: body.message,
+                  },
                 },
-              },
-            ],
+              ],
+            },
           },
-        },
+        }),
       });
 
       // An existing ID means all went well, but an error could have a variable response
-      if (req.id) {
+      if (req.status === 200) {
         // Send push notification
         fetch(`https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`, {
           method: 'POST',
@@ -222,6 +223,13 @@ export default component$(() => {
           <span>Send Message</span>
           <span>&#93;</span>
         </button>
+
+        <Toaster
+          toastOptions={{
+            class:
+              '!bg-background !border-2 !border-foreground/25 !rounded-none !font-mono !whitespace-pre-wrap !gap-4',
+          }}
+        />
       </form>
 
       {/* ===== Contact Info Cards ===== */}

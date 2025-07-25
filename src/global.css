@@ -70,8 +70,7 @@
     & *.modal-root,
     & *:has(+ .modal-root),
     & style,
-    & *:has(+ style),
-    & *:has(+ section[aria-label='Notifications alt+T']) {
+    & *:has(+ style) {
       margin-bottom: 0px !important;
     }
   }
@@ -82,8 +81,7 @@
     & *.modal-root,
     & *:has(+ .modal-root),
     & style,
-    & *:has(+ style),
-    & *:has(+ section[aria-label='Notifications alt+T']) {
+    & *:has(+ style) {
       margin-bottom: 0px !important;
     }
 
