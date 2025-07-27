@@ -52,7 +52,9 @@ export default defineConfig(({ command, mode }): UserConfig => {
         process.env.NOTION_API_KEY
       ),
       'import.meta.env.NOTION_DB_ID': JSON.stringify(process.env.NOTION_DB_ID),
+
       'import.meta.env.NTFY_TOPIC': JSON.stringify(process.env.NTFY_TOPIC),
+      'import.meta.env.NTFY_API_KEY': JSON.stringify(process.env.NTFY_API_KEY),
     },
 
     /**

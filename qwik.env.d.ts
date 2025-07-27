@@ -8,7 +8,9 @@ interface ViteTypeOptions {}
 interface ImportMetaEnv {
   readonly NOTION_API_KEY: string;
   readonly NOTION_DB_ID: string;
+
   readonly NTFY_TOPIC: string;
+  readonly NTFY_API_KEY: string;
 }
 
 interface ImportMeta {

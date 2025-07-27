@@ -23,7 +23,7 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       if (body.homepage!.trim() !== '') {
         // Bot caught!
         await new Promise((resolve) => setTimeout(() => resolve(true), 2000));
-        json(200, { message: 'Message sent successfully!' });
+        json(200, { message: 'Message sent successfully!', error: true });
       }
 
       // If no bot, proceed
@@ -44,19 +44,19 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
               title: [
                 {
                   text: {
-                    content: body.name,
+                    content: body.name + '1',
                   },
                 },
               ],
             },
             email: {
-              email: body.email,
+              email: body.email + '1',
             },
             subject: {
               rich_text: [
                 {
                   text: {
-                    content: body.subject,
+                    content: body.subject + '1',
                   },
                 },
               ],
@@ -65,7 +65,7 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
               rich_text: [
                 {
                   text: {
-                    content: body.message,
+                    content: body.message + '1',
                   },
                 },
               ],
@@ -77,12 +77,24 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
       // An existing ID means all went well, but an error could have a variable response
       if (req.status === 200) {
         // Send push notification
-        fetch(`https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`, {
-          method: 'POST',
-          body: JSON.stringify(body),
-        });
+        const request = await fetch(
+          `https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`,
+          {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: {
+              Authorization: `Bearer ${import.meta.env.NTFY_API_KEY}`,
+            },
+          }
+        );
 
-        json(200, { message: 'Message sent successfully!' });
+        const response = await request.json();
+
+        json(200, {
+          message: 'Message sent successfully!',
+          request: request ?? 'alwkjdwja',
+          response: response ?? 'dwlakdjawda',
+        });
       } else {
         json(500, { message: 'Something went wrong.\nPlease try again...' });
       }
@@ -115,6 +127,7 @@ export default component$(() => {
     isLoading.value = false;
     form.reset();
 
+    console.log(req);
     if (req.status === 200) {
       toast.success((await req.json()).message, {
         class: '[&_svg]:!text-[#2c7e70]',
@@ -159,8 +172,8 @@ export default component$(() => {
             <input
               name='name'
               disabled={isLoading.value}
-              required
-              aria-required
+              // required
+              // aria-required
               type='text'
               placeholder='e.g. John Doe'
             />
@@ -172,8 +185,8 @@ export default component$(() => {
             <input
               name='email'
               disabled={isLoading.value}
-              required
-              aria-required
+              // required
+              // aria-required
               type='email'
               placeholder='johndoe@email.com'
             />
@@ -200,8 +213,8 @@ export default component$(() => {
           <input
             name='subject'
             disabled={isLoading.value}
-            required
-            aria-required
+            // required
+            // aria-required
             type='text'
             placeholder="Reason you're writing"
           />
@@ -216,8 +229,8 @@ export default component$(() => {
             name='message'
             rows={4}
             disabled={isLoading.value}
-            required
-            aria-required
+            // required
+            // aria-required
             placeholder='Say hello. Ask a question. Make it count.'
           />
         </div>
