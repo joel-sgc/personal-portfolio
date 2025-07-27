@@ -140,7 +140,14 @@ export default component$(() => {
       <form
         preventdefault:submit
         onSubmit$={onSubmit}
-        class='border-2 border-foreground/25 p-8 flex flex-col gap-4'>
+        class='border-2 border-foreground/25 p-8 pt-4 flex flex-col gap-4'>
+        <Toaster
+          toastOptions={{
+            class:
+              '!bg-background !border-2 !border-foreground/25 !rounded-none !font-mono !whitespace-pre-wrap !gap-4',
+          }}
+        />
+
         <span class='text-base md:text-lg xl:text-xl'>Send Message</span>
 
         {/* ===== Name / Email ===== */}
@@ -218,18 +225,11 @@ export default component$(() => {
         <button
           type='submit'
           disabled={isLoading.value}
-          class='justify-between cursor-pointer lg:px-8 lg:not-disabled:hover:px-4 transition-all hover:bg-foreground'>
+          class='justify-between lg:px-8 lg:not-disabled:hover:px-4 transition-all hover:bg-foreground'>
           <span>&#91;</span>
           <span>Send Message</span>
           <span>&#93;</span>
         </button>
-
-        <Toaster
-          toastOptions={{
-            class:
-              '!bg-background !border-2 !border-foreground/25 !rounded-none !font-mono !whitespace-pre-wrap !gap-4',
-          }}
-        />
       </form>
 
       {/* ===== Contact Info Cards ===== */}
