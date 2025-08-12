@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /private/
+Disallow: /temp/
+
+Sitemap: https://www.joelsgc.dev/sitemap.xml
+
+# Google-specific
+User-agent: Googlebot
+Allow: /my-work/
+Allow: /thoughts/
+Crawl-delay: 10

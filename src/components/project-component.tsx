@@ -51,6 +51,7 @@ export const ProjectComponent = component$(
         {!!imageSrc && (
           <img
             src={imageSrc}
+            alt='Project Image'
             width={256}
             height={256}
             class="class='project-image w-full md:max-w-[256px]"

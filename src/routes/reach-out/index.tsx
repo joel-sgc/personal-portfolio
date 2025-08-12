@@ -74,27 +74,17 @@ export const onRequest: RequestHandler = async ({ request, query, json }) => {
         }),
       });
 
-      // An existing ID means all went well, but an error could have a variable response
       if (req.status === 200) {
         // Send push notification
-        const request = await fetch(
-          `https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`,
-          {
-            method: 'POST',
-            body: JSON.stringify(body),
-            headers: {
-              Authorization: `Bearer ${import.meta.env.NTFY_API_KEY}`,
-            },
-          }
-        );
-
-        const response = await request.json();
-
-        json(200, {
-          message: 'Message sent successfully!',
-          request: request ?? 'alwkjdwja',
-          response: response ?? 'dwlakdjawda',
+        await fetch(`https://ntfy.sh/${import.meta.env.NTFY_TOPIC}`, {
+          method: 'POST',
+          body: JSON.stringify(body),
+          headers: {
+            Authorization: `Bearer ${import.meta.env.NTFY_API_KEY}`,
+          },
         });
+
+        json(200, { message: 'Message sent successfully!' });
       } else {
         json(500, { message: 'Something went wrong.\nPlease try again...' });
       }
@@ -127,7 +117,6 @@ export default component$(() => {
     isLoading.value = false;
     form.reset();
 
-    console.log(req);
     if (req.status === 200) {
       toast.success((await req.json()).message, {
         class: '[&_svg]:!text-[#2c7e70]',

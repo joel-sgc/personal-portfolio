@@ -6,6 +6,7 @@ import { cn } from '~/utils';
 const contactLinks = [
   {
     link: 'mailto:joelsgc-work@outlook.com',
+    label: 'Email',
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -24,6 +25,7 @@ const contactLinks = [
   },
   {
     link: 'tel:+1(305)878-9618',
+    label: 'Phone',
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -41,6 +43,7 @@ const contactLinks = [
   },
   {
     link: 'https://www.linkedin.com/in/joelsgc',
+    label: 'LinkedIn',
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -60,6 +63,7 @@ const contactLinks = [
   },
   {
     link: 'https://www.github.com/joel-sgc',
+    label: 'Github',
     icon: (
       <svg
         xmlns='http://www.w3.org/2000/svg'
@@ -115,6 +119,7 @@ export const Header = component$(() => {
       <div class='order-2 md:order-4 lg:order-2 xl:order-4 md:col-span-2 lg:col-span-1 flex items-center justify-between gap-2 flex-col md:flex-row lg:flex-col xl:flex-row xl:items-end'>
         {contactLinks.map((link, i) => (
           <a
+            aria-label={link.label}
             key={i}
             href={link.link}
             class='flex items-center justify-center bg-foreground/5 w-full
@@ -125,7 +130,12 @@ export const Header = component$(() => {
       </div>
 
       {/* ===== Profile Picture ===== */}
-      <ImgGraphic class='order-3 md:order-2 lg:order-3 xl:order-1 rounded-2xl' />
+      <ImgGraphic
+        loading='eager'
+        fetchPriority='high'
+        alt='Joel Sebastian Gutierrez Cesar'
+        class='order-3 md:order-2 lg:order-3 xl:order-1 rounded-2xl'
+      />
 
       {/* ===== Navigation Links ===== */}
       <nav class='order-4 md:order-3 lg:order-4 xl:order-3 grid max-md:grid-cols-2 max-md:col-span-2 max-md:[&>*:nth-child(even)]:ml-auto xl:flex flex-col xl:gap-8 xl:py-8 xl:border-y xl:border-y-foreground'>
@@ -133,6 +143,7 @@ export const Header = component$(() => {
           <Link
             key={i}
             href={link.link}
+            aria-label={link.label}
             class={cn(
               'flex items-center justify-between w-full transition-all',
               (

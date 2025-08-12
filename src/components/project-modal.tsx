@@ -7,10 +7,13 @@ export const ProjectModal = component$(
   ({ isOpen, project }: { isOpen: Signal<boolean>; project: ProjectType }) => (
     <Modal.Root bind:show={isOpen} class='modal-root'>
       <Modal.Panel
+        aria-label={`${project.title} project modal`}
         class={cn(
           'modal-panel modal-backdrop group/modal focus-visible:!outline-none !max-h-[calc(100vh-32px)] md:!max-h-[calc(100vh-64px)] w-full !max-w-[calc(100%-16px)] md:!max-w-[calc(100%-32px)] xl:!max-w-[768px] bg-background text-foreground/75 flex flex-col gap-4 p-4'
         )}>
-        <Modal.Close class='absolute top-4 right-4 bg-transparent p-0 focus-visible:!outline-none aspect-square size-10 text-foreground border-none cursor-pointer'>
+        <Modal.Close
+          aria-label='Close Modal'
+          class='absolute top-4 right-4 bg-transparent p-0 focus-visible:!outline-none aspect-square size-10 text-foreground border-none cursor-pointer flex items-center justify-center'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             width='24'
