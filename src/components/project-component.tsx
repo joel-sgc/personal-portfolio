@@ -54,7 +54,7 @@ export const ProjectComponent = component$(
             alt='Project Image'
             width={256}
             height={256}
-            class="class='project-image w-full md:max-w-[256px]"
+            class='project-image w-full md:max-w-[384px]'
           />
         )}
 

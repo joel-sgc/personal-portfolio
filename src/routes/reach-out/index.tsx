@@ -273,7 +273,3 @@ export default component$(() => {
     </>
   );
 });
-
-export const head: DocumentHead = {
-  title: 'Reach Out',
-};

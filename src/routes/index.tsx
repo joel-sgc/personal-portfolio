@@ -45,8 +45,8 @@ export default component$(() => {
 
       {/* ===== About Me Facts ===== */}
       <ul>
-        <li>
-          My name is <strong>Joel Gutierrez</strong>
+        <li class='whitespace-pre-wrap'>
+          My name is <h1 class='text-lg font-bold inline'>Joel Gutierrez</h1>
         </li>
         <li>
           I&apos;m a proud supporter of one&apos;s{' '}
@@ -132,7 +132,3 @@ export default component$(() => {
     </>
   );
 });
-
-export const head: DocumentHead = {
-  title: 'About Me',
-};
